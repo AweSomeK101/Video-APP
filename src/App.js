@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
 
+import Header from "./Components/Header";
+import Main from "./Components/Main"
+import Sidebar from "./Components/Sidebar"
+
+const API= "AIzaSyDx3a_kBdIOdMX7MiJfiXWIcTBawjqSJMA";
 function App() {
+  const [videoStatus, setVideoStatus] = useState({
+    videoId: "6D1K_bguPrc",
+    title: "Videos for Dogs to Watch Extravaganza : Dog Watch TV - 8 Hours of Birds and Squirrel Fun for Dogs ✅",
+    channelTitle: "Paul Dinning",
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header API={API} handleVidUpdate={e=>setVideoStatus(e)} />
+
+      <div className="grid md:grid-3x-2x gap-5 contain pt-6">
+        <Main videoStatus={videoStatus} />
+        <Sidebar videoId={videoStatus.videoId} API={API} handleVidUpdate={e=>setVideoStatus(e)} />
+      </div>
+    </>
   );
 }
 
