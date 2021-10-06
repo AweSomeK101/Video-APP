@@ -1,16 +1,25 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import Header from "./Components/Header";
 import Main from "./Components/Main"
 import Sidebar from "./Components/Sidebar"
 
-const API= "AIzaSyDx3a_kBdIOdMX7MiJfiXWIcTBawjqSJMA";
+const API= "AIzaSyBpcqgcks6xRZYJWGb5hNvEItBzOHUyfgg";
 function App() {
   const [videoStatus, setVideoStatus] = useState({
-    videoId: "6D1K_bguPrc",
-    title: "Videos for Dogs to Watch Extravaganza : Dog Watch TV - 8 Hours of Birds and Squirrel Fun for Dogs ✅",
-    channelTitle: "Paul Dinning",
+    videoId: null,
+    title: null,
+    channelTitle: null,
   })
+  console.log("videoStatus", videoStatus)
+
+  useEffect(()=>{
+    setVideoStatus({
+      videoId: "6D1K_bguPrc",
+      title: "Videos for Dogs to Watch Extravaganza : Dog Watch TV - 8 Hours of Birds and Squirrel Fun for Dogs ✅",
+      channelTitle: "Paul Dinning",
+    })
+  }, [])
 
   return (
     <>

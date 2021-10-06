@@ -11,9 +11,11 @@ function Sidebar({ videoId, API, handleVidUpdate }) {
     )
       .then((res) => {
         if (res.status >= 200 && res.status <= 299) return res.json();
-        throw Error(res.statusText);
+        throw Error(res);
       })
-      .then((data) =>  setVideoArr(data.items))
+      .then((data) =>  {
+        setVideoArr(data.items)
+      })
       .catch((err) => console.log(err));
   }, [videoId]);
 
